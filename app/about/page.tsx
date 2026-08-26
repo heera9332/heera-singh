@@ -17,6 +17,7 @@ import {
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { profileData } from "@/data/profile";
 import { experiencesData, educationData } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
@@ -35,29 +36,31 @@ export default function AboutPage() {
       {/* Hero / Intro Header */}
       <section>
         <Container>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 max-w-4xl">
-            <div className="relative h-24 w-24 sm:h-32 sm:w-32 rounded-3xl p-1 ring-2 ring-primary/40 overflow-hidden shrink-0 shadow-xl shadow-primary/10">
-              <Image
-                src={profileData.avatar}
-                alt={profileData.name}
-                width={128}
-                height={128}
-                className="h-full w-full rounded-2xl object-cover"
-                priority
-              />
+          <AnimateIn direction="up">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 max-w-4xl">
+              <div className="relative h-24 w-24 sm:h-32 sm:w-32 rounded-3xl p-1 ring-2 ring-primary/40 overflow-hidden shrink-0 shadow-xl shadow-primary/10">
+                <Image
+                  src={profileData.avatar}
+                  alt={profileData.name}
+                  width={128}
+                  height={128}
+                  className="h-full w-full rounded-2xl object-cover"
+                  priority
+                />
+              </div>
+              <div className="space-y-2">
+                <Badge variant="orange" className="font-semibold text-xs">
+                  Developer Profile
+                </Badge>
+                <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+                  About Heera Singh Lodhi
+                </h1>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  Full Stack Software Developer, freelance specialist, and B.Tech graduate in Computer Science.
+                </p>
+              </div>
             </div>
-            <div className="space-y-2">
-              <Badge variant="orange" className="font-semibold text-xs">
-                Developer Profile
-              </Badge>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-                About Heera Singh Lodhi
-              </h1>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Full Stack Software Developer, freelance specialist, and B.Tech graduate in Computer Science.
-              </p>
-            </div>
-          </div>
+          </AnimateIn>
         </Container>
       </section>
 
@@ -66,7 +69,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Story & Philosophy */}
-            <div className="lg:col-span-8 space-y-6">
+            <AnimateIn direction="left" delay={100} className="lg:col-span-8 space-y-6">
               <div className="space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
                 {profileData.fullBio.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
@@ -104,10 +107,10 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimateIn>
 
             {/* Quick Info & Links Card */}
-            <div className="lg:col-span-4">
+            <AnimateIn direction="right" delay={150} className="lg:col-span-4">
               <div className="rounded-2xl border border-border/80 bg-card/80 p-6 space-y-6">
                 <h3 className="text-base font-bold text-foreground border-b border-border/60 pb-3">
                   Quick Details
@@ -137,7 +140,7 @@ export default function AboutPage() {
                     <div>
                       <span className="font-semibold text-foreground block">Availability:</span>
                       <span className="text-emerald-500 font-medium">
-                        Open for freelance & contract work
+                        Open for freelance &amp; contract work
                       </span>
                     </div>
                   </div>
@@ -175,7 +178,7 @@ export default function AboutPage() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </AnimateIn>
           </div>
         </Container>
       </section>
@@ -184,72 +187,73 @@ export default function AboutPage() {
       <section className="py-12 bg-background/50 border-y border-border/50">
         <Container>
           <div className="space-y-8 max-w-4xl mx-auto">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                Career History
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                Work Experience
-              </h2>
-            </div>
+            <AnimateIn direction="up">
+              <div className="space-y-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                  Career History
+                </span>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                  Work Experience
+                </h2>
+              </div>
+            </AnimateIn>
 
             <div className="space-y-6">
-              {experiencesData.map((exp) => (
-                <div
-                  key={exp.id}
-                  className="rounded-2xl border border-border/80 bg-card/60 p-6 sm:p-8 space-y-4 transition-all hover:border-primary/40"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/60 pb-4">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-xl font-bold text-foreground">
-                          {exp.role}
-                        </h3>
-                        {exp.current && (
-                          <Badge variant="success" className="text-[10px]">
-                            Current Role
-                          </Badge>
-                        )}
+              {experiencesData.map((exp, index) => (
+                <AnimateIn key={exp.id} delay={index * 120} direction="up">
+                  <div className="rounded-2xl border border-border/80 bg-card/60 p-6 sm:p-8 space-y-4 transition-all hover:border-primary/40">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/60 pb-4">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-xl font-bold text-foreground">
+                            {exp.role}
+                          </h3>
+                          {exp.current && (
+                            <Badge variant="success" className="text-[10px]">
+                              Current Role
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-sm font-semibold text-primary mt-0.5">
+                          {exp.company}
+                        </p>
                       </div>
-                      <p className="text-sm font-semibold text-primary mt-0.5">
-                        {exp.company}
-                      </p>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Calendar className="h-3.5 w-3.5" />
+                        <span>{exp.period}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Calendar className="h-3.5 w-3.5" />
-                      <span>{exp.period}</span>
-                    </div>
-                  </div>
 
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {exp.description}
-                  </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {exp.description}
+                    </p>
 
-                  <div className="space-y-2 pt-2">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground block">
-                      Key Responsibilities & Achievements:
-                    </span>
-                    <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
-                      {exp.achievements.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5 pt-3">
-                    {exp.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-md border border-border/70 bg-background/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
-                      >
-                        {t}
+                    <div className="space-y-2 pt-2">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-foreground block">
+                        Key Responsibilities &amp; Achievements:
                       </span>
-                    ))}
+                      <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
+                        {exp.achievements.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-3">
+                      {exp.technologies.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md border border-border/70 bg-background/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </AnimateIn>
               ))}
             </div>
           </div>
@@ -260,52 +264,53 @@ export default function AboutPage() {
       <section>
         <Container>
           <div className="space-y-8 max-w-4xl mx-auto">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                Academic Background
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                Education
-              </h2>
-            </div>
+            <AnimateIn direction="up">
+              <div className="space-y-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                  Academic Background
+                </span>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                  Education
+                </h2>
+              </div>
+            </AnimateIn>
 
             {educationData.map((edu, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl border border-border/80 bg-card/60 p-6 sm:p-8 space-y-4"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/60 pb-4">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-sm font-semibold text-primary mt-0.5">
-                      {edu.institution}
-                    </p>
+              <AnimateIn key={idx} delay={idx * 100 + 100} direction="up">
+                <div className="rounded-2xl border border-border/80 bg-card/60 p-6 sm:p-8 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/60 pb-4">
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-sm font-semibold text-primary mt-0.5">
+                        {edu.institution}
+                      </p>
+                    </div>
+                    <span className="text-xs text-muted-foreground">
+                      {edu.location}
+                    </span>
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {edu.location}
-                  </span>
-                </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {edu.details}
-                </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {edu.details}
+                  </p>
 
-                <div className="space-y-1.5 pt-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-foreground block">
-                    Highlights:
-                  </span>
-                  <ul className="space-y-1 text-xs sm:text-sm text-muted-foreground">
-                    {edu.highlights.map((h, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="space-y-1.5 pt-2">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-foreground block">
+                      Highlights:
+                    </span>
+                    <ul className="space-y-1 text-xs sm:text-sm text-muted-foreground">
+                      {edu.highlights.map((h, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </AnimateIn>
             ))}
           </div>
         </Container>
@@ -315,42 +320,43 @@ export default function AboutPage() {
       <section className="py-12 bg-background/50 border-t border-border/50">
         <Container>
           <div className="space-y-8 max-w-4xl mx-auto">
-            <div className="space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                Competencies
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">
-                Full Technical Stack
-              </h2>
-            </div>
+            <AnimateIn direction="up">
+              <div className="space-y-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                  Competencies
+                </span>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                  Full Technical Stack
+                </h2>
+              </div>
+            </AnimateIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {skillCategories.map((cat) => (
-                <div
-                  key={cat.title}
-                  className="rounded-2xl border border-border/80 bg-card/60 p-6 space-y-3"
-                >
-                  <h3 className="text-base font-bold text-foreground">
-                    {cat.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    {cat.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {cat.skills.map((skill) => (
-                      <span
-                        key={skill.name}
-                        className={`rounded-md px-2.5 py-1 text-xs font-medium border ${
-                          skill.highlight
-                            ? "border-primary/30 bg-primary/10 text-primary font-semibold"
-                            : "border-border/70 bg-background/60 text-muted-foreground"
-                        }`}
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
+              {skillCategories.map((cat, index) => (
+                <AnimateIn key={cat.title} delay={index * 100} direction="up" className="h-full">
+                  <div className="rounded-2xl border border-border/80 bg-card/60 p-6 space-y-3 h-full">
+                    <h3 className="text-base font-bold text-foreground">
+                      {cat.title}
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      {cat.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {cat.skills.map((skill) => (
+                        <span
+                          key={skill.name}
+                          className={`rounded-md px-2.5 py-1 text-xs font-medium border ${
+                            skill.highlight
+                              ? "border-primary/30 bg-primary/10 text-primary font-semibold"
+                              : "border-border/70 bg-background/60 text-muted-foreground"
+                          }`}
+                        >
+                          {skill.name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </AnimateIn>
               ))}
             </div>
           </div>
@@ -360,28 +366,30 @@ export default function AboutPage() {
       {/* Bottom CTA */}
       <section>
         <Container>
-          <div className="rounded-3xl border border-primary/30 bg-card/80 p-8 sm:p-12 text-center space-y-6 max-w-4xl mx-auto shadow-xl shadow-primary/5">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Ready to work together on your project?
-            </h2>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
-              I am available for freelance projects, contract roles, and technical consulting.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link href="/contact/">
-                <Button size="lg" className="gap-2 font-semibold shadow-md shadow-primary/20">
-                  <Sparkles className="h-4 w-4" />
-                  Start a Project
-                </Button>
-              </Link>
-              <Link href="/work/">
-                <Button variant="outline" size="lg" className="gap-2">
-                  View Selected Work
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
+          <AnimateIn direction="up">
+            <div className="rounded-3xl border border-primary/30 bg-card/80 p-8 sm:p-12 text-center space-y-6 max-w-4xl mx-auto shadow-xl shadow-primary/5">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+                Ready to work together on your project?
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+                I am available for freelance projects, contract roles, and student mentorship.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link href="/contact/">
+                  <Button size="lg" className="gap-2 font-semibold shadow-md shadow-primary/20">
+                    <Sparkles className="h-4 w-4" />
+                    Start a Project
+                  </Button>
+                </Link>
+                <Link href="/work/">
+                  <Button variant="outline" size="lg" className="gap-2">
+                    View Selected Work
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
+          </AnimateIn>
         </Container>
       </section>
     </div>

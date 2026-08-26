@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { CaseStudyHeader } from "@/components/projects/case-study-header";
 import { MetricBadge } from "@/components/projects/metric-badge";
 import {
@@ -82,13 +83,15 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       <Container>
         <div className="max-w-4xl mx-auto space-y-14">
           {/* Header */}
-          <CaseStudyHeader project={project} />
+          <AnimateIn direction="up">
+            <CaseStudyHeader project={project} />
+          </AnimateIn>
 
           {/* Key Metrics Section */}
-          <div className="space-y-4">
+          <AnimateIn delay={100} direction="up" className="space-y-4">
             <h2 className="text-xs font-bold uppercase tracking-wider text-primary flex items-center gap-1.5">
               <Zap className="h-3.5 w-3.5" />
-              Measurable Business & Engineering Impact
+              Measurable Business &amp; Engineering Impact
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {project.metrics.map((metric) => (
@@ -100,63 +103,67 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 />
               ))}
             </div>
-          </div>
+          </AnimateIn>
 
           {/* Overview: The Challenge & The Solution */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-6 sm:p-7 rounded-2xl border border-border/80 bg-card/60 space-y-3">
-              <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                <Target className="h-4 w-4" />
-                The Business Challenge
+          <AnimateIn delay={150} direction="up">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-6 sm:p-7 rounded-2xl border border-border/80 bg-card/60 space-y-3">
+                <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                  <Target className="h-4 w-4" />
+                  The Business Challenge
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {project.overview.challenge}
+                </p>
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {project.overview.challenge}
-              </p>
-            </div>
 
-            <div className="p-6 sm:p-7 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
-              <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
-                <Zap className="h-4 w-4" />
-                The Engineering Solution
+              <div className="p-6 sm:p-7 rounded-2xl border border-primary/20 bg-primary/5 space-y-3">
+                <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider">
+                  <Zap className="h-4 w-4" />
+                  The Engineering Solution
+                </div>
+                <p className="text-sm leading-relaxed text-foreground">
+                  {project.overview.solution}
+                </p>
               </div>
-              <p className="text-sm leading-relaxed text-foreground">
-                {project.overview.solution}
-              </p>
             </div>
-          </div>
+          </AnimateIn>
 
           {/* Architecture & Stack Decisions */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-border/80 bg-card/60 space-y-4">
-            <div className="flex items-center gap-2 text-foreground font-bold text-lg">
-              <Layers className="h-5 w-5 text-primary" />
-              System Architecture & Design Decisions
-            </div>
-            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-              {project.overview.architecture}
-            </p>
+          <AnimateIn delay={200} direction="up">
+            <div className="p-6 sm:p-8 rounded-2xl border border-border/80 bg-card/60 space-y-4">
+              <div className="flex items-center gap-2 text-foreground font-bold text-lg">
+                <Layers className="h-5 w-5 text-primary" />
+                System Architecture &amp; Design Decisions
+              </div>
+              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                {project.overview.architecture}
+              </p>
 
-            <div className="pt-3 border-t border-border/60">
-              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
-                Technologies & Tools Deployed:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {project.technologies.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md border border-border/70 bg-background/80 px-2.5 py-1 text-xs font-medium text-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
+              <div className="pt-3 border-t border-border/60">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-2">
+                  Technologies &amp; Tools Deployed:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.technologies.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md border border-border/70 bg-background/80 px-2.5 py-1 text-xs font-medium text-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </AnimateIn>
 
           {/* Key Features Implemented */}
-          <div className="space-y-4">
+          <AnimateIn delay={250} direction="up" className="space-y-4">
             <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
               <FileCode2 className="h-5 w-5 text-primary" />
-              Key Features & Capabilities
+              Key Features &amp; Capabilities
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {project.features.map((feature, i) => (
@@ -171,11 +178,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 </div>
               ))}
             </div>
-          </div>
+          </AnimateIn>
 
           {/* In-depth Narrative Sections */}
           {project.sections.map((section, idx) => (
-            <div key={idx} className="space-y-4 border-t border-border/60 pt-8">
+            <AnimateIn key={idx} delay={idx * 100} direction="up" className="space-y-4 border-t border-border/60 pt-8">
               <h3 className="text-xl font-bold text-foreground">
                 {section.title}
               </h3>
@@ -193,74 +200,80 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   ))}
                 </ul>
               )}
-            </div>
+            </AnimateIn>
           ))}
 
           {/* Measurable Results */}
-          <div className="p-6 sm:p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 space-y-3">
-            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-base uppercase tracking-wider">
-              <CheckCircle2 className="h-5 w-5" />
-              Final Outcome & Business Value
+          <AnimateIn delay={150} direction="up">
+            <div className="p-6 sm:p-8 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 space-y-3">
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-base uppercase tracking-wider">
+                <CheckCircle2 className="h-5 w-5" />
+                Final Outcome &amp; Business Value
+              </div>
+              <p className="text-sm sm:text-base leading-relaxed text-foreground">
+                {project.overview.results}
+              </p>
             </div>
-            <p className="text-sm sm:text-base leading-relaxed text-foreground">
-              {project.overview.results}
-            </p>
-          </div>
+          </AnimateIn>
 
           {/* Next & Previous Project Navigation */}
-          <div className="border-t border-border/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            {prevProject && (
-              <Link
-                href={`/work/${prevProject.slug}/`}
-                className="flex items-center gap-3 p-4 rounded-xl border border-border/70 bg-card/40 hover:border-primary/50 transition-all w-full sm:w-auto"
-              >
-                <ArrowLeft className="h-4 w-4 text-primary shrink-0" />
-                <div className="text-left">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground block">
-                    Previous Project
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold text-foreground line-clamp-1">
-                    {prevProject.title}
-                  </span>
-                </div>
-              </Link>
-            )}
+          <AnimateIn delay={200} direction="up">
+            <div className="border-t border-border/80 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+              {prevProject && (
+                <Link
+                  href={`/work/${prevProject.slug}/`}
+                  className="flex items-center gap-3 p-4 rounded-xl border border-border/70 bg-card/40 hover:border-primary/50 transition-all w-full sm:w-auto"
+                >
+                  <ArrowLeft className="h-4 w-4 text-primary shrink-0" />
+                  <div className="text-left">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground block">
+                      Previous Project
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-foreground line-clamp-1">
+                      {prevProject.title}
+                    </span>
+                  </div>
+                </Link>
+              )}
 
-            {nextProject && (
-              <Link
-                href={`/work/${nextProject.slug}/`}
-                className="flex items-center justify-between sm:justify-end gap-3 p-4 rounded-xl border border-border/70 bg-card/40 hover:border-primary/50 transition-all w-full sm:w-auto text-right"
-              >
-                <div className="text-left sm:text-right">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground block">
-                    Next Project
-                  </span>
-                  <span className="text-xs sm:text-sm font-bold text-foreground line-clamp-1">
-                    {nextProject.title}
-                  </span>
-                </div>
-                <ArrowRight className="h-4 w-4 text-primary shrink-0" />
-              </Link>
-            )}
-          </div>
+              {nextProject && (
+                <Link
+                  href={`/work/${nextProject.slug}/`}
+                  className="flex items-center justify-between sm:justify-end gap-3 p-4 rounded-xl border border-border/70 bg-card/40 hover:border-primary/50 transition-all w-full sm:w-auto text-right"
+                >
+                  <div className="text-left sm:text-right">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground block">
+                      Next Project
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-foreground line-clamp-1">
+                      {nextProject.title}
+                    </span>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-primary shrink-0" />
+                </Link>
+              )}
+            </div>
+          </AnimateIn>
 
           {/* Bottom Conversion CTA */}
-          <div className="rounded-3xl border border-primary/30 bg-card/80 p-8 text-center space-y-6 shadow-xl shadow-primary/5">
-            <h2 className="text-2xl font-bold text-foreground">
-              Need a similar solution engineered for your business?
-            </h2>
-            <p className="text-sm text-muted-foreground max-w-lg mx-auto">
-              I can build a custom Next.js application, WordPress theme/plugin, or API automation tailored to your exact stack.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link href="/contact/">
-                <Button size="lg" className="gap-2 font-semibold shadow-md shadow-primary/20">
-                  <Sparkles className="h-4 w-4" />
-                  Discuss Your Project
-                </Button>
-              </Link>
+          <AnimateIn delay={250} direction="up">
+            <div className="rounded-3xl border border-primary/30 bg-card/80 p-8 text-center space-y-6 shadow-xl shadow-primary/5">
+              <h2 className="text-2xl font-bold text-foreground">
+                Need a similar solution engineered for your business?
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+                I can build a custom Next.js application, WordPress theme/plugin, or API automation tailored to your exact stack.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link href="/contact/">
+                  <Button size="lg" className="gap-2 font-semibold shadow-md shadow-primary/20">
+                    <Sparkles className="h-4 w-4" />
+                    Discuss Your Project
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </Container>
     </div>

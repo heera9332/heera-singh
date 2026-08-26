@@ -4,13 +4,13 @@ import {
   MessageSquare,
   Linkedin,
   Github,
-  CheckCircle2,
   Clock,
   MapPin,
   Sparkles
 } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Badge } from "@/components/ui/badge";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { ContactForm } from "@/components/sections/contact-form";
 import { FAQSection } from "@/components/sections/faq-section";
 import { profileData } from "@/data/profile";
@@ -29,17 +29,19 @@ export default function ContactPage() {
       {/* Header */}
       <section>
         <Container>
-          <div className="max-w-3xl space-y-4 text-center sm:text-left mx-auto sm:mx-0">
-            <Badge variant="orange" className="font-semibold text-xs">
-              Start a Project
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-              Let's Discuss Your Project
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Have a new web application to build, a custom WordPress requirement, or need to optimize an existing stack? Let's connect.
-            </p>
-          </div>
+          <AnimateIn direction="up">
+            <div className="max-w-3xl space-y-4 text-center sm:text-left mx-auto sm:mx-0">
+              <Badge variant="orange" className="font-semibold text-xs">
+                Start a Project or Mentorship
+              </Badge>
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+                Let's Discuss Your Requirements
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Have a new web application to build, a custom WordPress requirement, or looking for 1-on-1 placement mentorship? Let's connect.
+              </p>
+            </div>
+          </AnimateIn>
         </Container>
       </section>
 
@@ -48,12 +50,12 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
             {/* Form Column */}
-            <div className="lg:col-span-7">
+            <AnimateIn direction="left" className="lg:col-span-7">
               <ContactForm />
-            </div>
+            </AnimateIn>
 
             {/* Direct Channels Column */}
-            <div className="lg:col-span-5 space-y-6">
+            <AnimateIn direction="right" delay={150} className="lg:col-span-5 space-y-6">
               {/* Availability Status Card */}
               <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 space-y-3">
                 <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
@@ -165,7 +167,7 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimateIn>
           </div>
         </Container>
       </section>

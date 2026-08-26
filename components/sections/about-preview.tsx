@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2, Briefcase, GraduationCap } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
+import { AnimateIn } from "@/components/ui/animate-in";
 import { profileData } from "@/data/profile";
 
 export function AboutPreview() {
@@ -11,7 +12,7 @@ export function AboutPreview() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Bio & Story */}
-          <div className="lg:col-span-7 space-y-6">
+          <AnimateIn direction="left" className="lg:col-span-7 space-y-6">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 About the Developer
@@ -47,7 +48,7 @@ export function AboutPreview() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link href="/about/">
                 <Button variant="outline" className="gap-2 font-semibold">
-                  <span>Read Full Background & Experience</span>
+                  <span>Read Full Background &amp; Experience</span>
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
@@ -57,10 +58,10 @@ export function AboutPreview() {
                 </Button>
               </Link>
             </div>
-          </div>
+          </AnimateIn>
 
           {/* Right Column: Quick Credentials Card */}
-          <div className="lg:col-span-5">
+          <AnimateIn direction="right" delay={150} className="lg:col-span-5">
             <div className="rounded-2xl border border-border/80 bg-card/80 p-6 sm:p-8 space-y-6 shadow-sm">
               <div className="flex items-center gap-4 border-b border-border/60 pb-4">
                 <div className="relative h-16 w-16 rounded-2xl overflow-hidden ring-2 ring-primary/30 shrink-0">
@@ -117,7 +118,7 @@ export function AboutPreview() {
                 </div>
               </div>
             </div>
-          </div>
+          </AnimateIn>
         </div>
       </Container>
     </section>
