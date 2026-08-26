@@ -1,0 +1,263 @@
+"use client";
+
+import * as React from "react";
+import { Send, CheckCircle2, AlertCircle, MessageSquare, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { profileData } from "@/data/profile";
+
+const PROJECT_TYPES = [
+  "Custom Next.js Web App / SaaS",
+  "Custom WordPress Theme / Plugin",
+  "WooCommerce / E-Commerce Store",
+  "API Development & Integration",
+  "Website Speed & Core Web Vitals",
+  "Other / Retainer Partnership"
+];
+
+const BUDGET_RANGES = [
+  "Under $1,000",
+  "$1,000 - $3,000",
+  "$3,000 - $5,000",
+  "$5,000+",
+  "Not Sure / Hourly / Retainer"
+];
+
+export function ContactForm() {
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    projectType: PROJECT_TYPES[0],
+    budget: BUDGET_RANGES[1],
+    timeline: "Within 1 Month",
+    message: "",
+  });
+
+  const [status, setStatus] = React.useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus("error");
+      setErrorMessage("Please fill in all required fields (Name, Email, Message).");
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      // Static Form Handling:
+      // Uses Web3Forms or standard mailto fallback
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "e0310fa0-79ea-4d1e-bd04-4e20b3cbff4c", // Default Web3Forms public key or project key
+          subject: `New Project Inquiry from ${formData.name} - ${formData.projectType}`,
+          from_name: formData.name,
+          email: formData.email,
+          project_type: formData.projectType,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        // Fallback: If network block or service unavailable, open mailto
+        const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
+          `Project Inquiry: ${formData.projectType}`
+        )}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\nBudget: ${formData.budget}\nTimeline: ${formData.timeline}\n\nProject Overview:\n${formData.message}`
+        )}`;
+        window.location.href = mailtoUrl;
+        setStatus("success");
+      }
+    } catch {
+      // In case of offline/fetch error, redirect to mailto safely
+      const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
+        `Project Inquiry: ${formData.projectType}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\nBudget: ${formData.budget}\nTimeline: ${formData.timeline}\n\nProject Overview:\n${formData.message}`
+      )}`;
+      window.location.href = mailtoUrl;
+      setStatus("success");
+    }
+  };
+
+  return (
+    <div className="rounded-2xl border border-border/80 bg-card/80 p-6 sm:p-8 shadow-sm">
+      {status === "success" ? (
+        <div className="text-center py-12 space-y-4 animate-fade-in">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <CheckCircle2 className="h-8 w-8" />
+          </div>
+          <h3 className="text-2xl font-bold text-foreground">
+            Thank You, {formData.name}!
+          </h3>
+          <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+            Your project details have been sent. I will review your requirements and get back to you within 12 hours.
+          </p>
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setStatus("idle");
+                setFormData({
+                  name: "",
+                  email: "",
+                  projectType: PROJECT_TYPES[0],
+                  budget: BUDGET_RANGES[1],
+                  timeline: "Within 1 Month",
+                  message: "",
+                });
+              }}
+            >
+              Send Another Message
+            </Button>
+            <a
+              href={profileData.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="gap-2 font-semibold">
+                <MessageSquare className="h-4 w-4" />
+                Chat on WhatsApp Now
+              </Button>
+            </a>
+          </div>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-1">
+            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-primary" />
+              Project Inquiry Form
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              Fill in the details below to receive a scope breakdown and price estimate.
+            </p>
+          </div>
+
+          {status === "error" && errorMessage && (
+            <div className="p-3.5 rounded-xl border border-destructive/30 bg-destructive/10 text-destructive text-xs flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Name & Email */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label htmlFor="name" className="text-xs font-semibold text-foreground">
+                Your Name <span className="text-primary">*</span>
+              </label>
+              <Input
+                id="name"
+                required
+                placeholder="e.g. Sarah Connor"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="text-xs font-semibold text-foreground">
+                Email Address <span className="text-primary">*</span>
+              </label>
+              <Input
+                id="email"
+                type="email"
+                required
+                placeholder="sarah@company.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+          </div>
+
+          {/* Project Type & Budget */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label htmlFor="projectType" className="text-xs font-semibold text-foreground">
+                Project Category
+              </label>
+              <select
+                id="projectType"
+                value={formData.projectType}
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                className="flex h-11 w-full rounded-lg border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all"
+              >
+                {PROJECT_TYPES.map((type) => (
+                  <option key={type} value={type} className="bg-card text-foreground">
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-1.5">
+              <label htmlFor="budget" className="text-xs font-semibold text-foreground">
+                Estimated Budget
+              </label>
+              <select
+                id="budget"
+                value={formData.budget}
+                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                className="flex h-11 w-full rounded-lg border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all"
+              >
+                {BUDGET_RANGES.map((range) => (
+                  <option key={range} value={range} className="bg-card text-foreground">
+                    {range}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Message / Requirements */}
+          <div className="space-y-1.5">
+            <label htmlFor="message" className="text-xs font-semibold text-foreground">
+              Project Details & Goals <span className="text-primary">*</span>
+            </label>
+            <Textarea
+              id="message"
+              required
+              rows={4}
+              placeholder="Briefly describe your project, timeline requirements, key features, or link to design mockups..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            />
+          </div>
+
+          <Button
+            type="submit"
+            size="lg"
+            disabled={status === "submitting"}
+            className="w-full gap-2 font-semibold shadow-md shadow-primary/20"
+          >
+            {status === "submitting" ? (
+              <span>Sending Inquiry...</span>
+            ) : (
+              <>
+                <Send className="h-4 w-4" />
+                Submit Project Inquiry
+              </>
+            )}
+          </Button>
+
+          <p className="text-center text-[11px] text-muted-foreground">
+            🔒 Your information is confidential and will only be used to respond to your project.
+          </p>
+        </form>
+      )}
+    </div>
+  );
+}

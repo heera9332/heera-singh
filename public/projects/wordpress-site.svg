@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="wpBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="wpOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#wpBgGrad)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#111114" stroke="#27272a" stroke-width="2"/>
+  <!-- Nav header -->
+  <rect x="40" y="40" width="720" height="60" rx="16" fill="#1c1c20"/>
+  <circle cx="80" cy="70" r="16" fill="url(#wpOrange)"/>
+  <text x="75" y="76" fill="#ffffff" font-family="system-ui" font-size="16" font-weight="bold">W</text>
+  <rect x="120" y="62" width="80" height="16" rx="4" fill="#ffffff" opacity="0.9"/>
+  <rect x="520" y="62" width="60" height="16" rx="4" fill="#71717a"/>
+  <rect x="600" y="62" width="60" height="16" rx="4" fill="#71717a"/>
+  <rect x="675" y="56" width="65" height="28" rx="6" fill="url(#wpOrange)"/>
+
+  <!-- Hero block -->
+  <rect x="70" y="130" width="660" height="150" rx="12" fill="#18181b" stroke="#27272a"/>
+  <text x="100" y="180" fill="#ffffff" font-family="system-ui" font-size="24" font-weight="800">Enterprise Agency Experience</text>
+  <text x="100" y="210" fill="#a1a1aa" font-family="system-ui" font-size="14">Custom Gutenberg blocks & 99/100 PageSpeed optimization</text>
+  <rect x="100" y="235" width="130" height="30" rx="6" fill="url(#wpOrange)"/>
+
+  <!-- Columns -->
+  <rect x="70" y="300" width="200" height="130" rx="12" fill="#18181b" stroke="#27272a"/>
+  <rect x="90" y="325" width="36" height="36" rx="8" fill="url(#wpOrange)" opacity="0.2"/>
+  <rect x="90" y="375" width="120" height="12" rx="4" fill="#ffffff"/>
+  <rect x="90" y="395" width="80" height="10" rx="4" fill="#71717a"/>
+
+  <rect x="300" y="300" width="200" height="130" rx="12" fill="#18181b" stroke="#27272a"/>
+  <rect x="320" y="325" width="36" height="36" rx="8" fill="url(#wpOrange)" opacity="0.2"/>
+  <rect x="320" y="375" width="120" height="12" rx="4" fill="#ffffff"/>
+  <rect x="320" y="395" width="80" height="10" rx="4" fill="#71717a"/>
+
+  <rect x="530" y="300" width="200" height="130" rx="12" fill="#18181b" stroke="#27272a"/>
+  <rect x="550" y="325" width="36" height="36" rx="8" fill="url(#wpOrange)" opacity="0.2"/>
+  <rect x="550" y="375" width="120" height="12" rx="4" fill="#ffffff"/>
+  <rect x="550" y="395" width="80" height="10" rx="4" fill="#71717a"/>
+</svg>

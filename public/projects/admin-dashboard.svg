@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="adminBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="adminOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#adminBg)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#111114" stroke="#27272a" stroke-width="2"/>
+  <!-- Top bar -->
+  <rect x="40" y="40" width="720" height="55" rx="16" fill="#1c1c20"/>
+  <rect x="70" y="58" width="130" height="18" rx="4" fill="url(#adminOrange)"/>
+  <circle cx="700" cy="67" r="14" fill="#27272a"/>
+
+  <!-- Server nodes grid -->
+  <rect x="70" y="120" width="210" height="130" rx="10" fill="#18181b" stroke="#27272a"/>
+  <text x="90" y="150" fill="#a1a1aa" font-family="system-ui" font-size="12">WHM NODE 01</text>
+  <circle cx="250" cy="146" r="5" fill="#10b981"/>
+  <text x="90" y="185" fill="#ffffff" font-family="system-ui" font-size="20" font-weight="bold">99.99% Up</text>
+  <rect x="90" y="210" width="170" height="8" rx="4" fill="#27272a"/>
+  <rect x="90" y="210" width="70" height="8" rx="4" fill="url(#adminOrange)"/>
+
+  <rect x="295" y="120" width="210" height="130" rx="10" fill="#18181b" stroke="#27272a"/>
+  <text x="315" y="150" fill="#a1a1aa" font-family="system-ui" font-size="12">WHM NODE 02</text>
+  <circle cx="475" cy="146" r="5" fill="#10b981"/>
+  <text x="315" y="185" fill="#ffffff" font-family="system-ui" font-size="20" font-weight="bold">99.95% Up</text>
+  <rect x="315" y="210" width="170" height="8" rx="4" fill="#27272a"/>
+  <rect x="315" y="210" width="110" height="8" rx="4" fill="url(#adminOrange)"/>
+
+  <rect x="520" y="120" width="210" height="130" rx="10" fill="#18181b" stroke="#27272a"/>
+  <text x="540" y="150" fill="#a1a1aa" font-family="system-ui" font-size="12">WHMCS BILLING</text>
+  <circle cx="700" cy="146" r="5" fill="#10b981"/>
+  <text x="540" y="185" fill="#10b981" font-family="system-ui" font-size="20" font-weight="bold">Synced</text>
+  <rect x="540" y="210" width="170" height="8" rx="4" fill="#27272a"/>
+  <rect x="540" y="210" width="170" height="8" rx="4" fill="#10b981"/>
+
+  <!-- API Activity table -->
+  <rect x="70" y="270" width="660" height="160" rx="10" fill="#18181b" stroke="#27272a"/>
+  <text x="95" y="300" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="bold">Automated Provisioning Log</text>
+  <rect x="95" y="320" width="610" height="24" rx="4" fill="#27272a"/>
+  <text x="110" y="336" fill="#a1a1aa" font-family="system-ui" font-size="11">POST /api/whm/create-account • Client ID #4892 • Status: 200 OK (84ms)</text>
+  <rect x="95" y="352" width="610" height="24" rx="4" fill="#27272a"/>
+  <text x="110" y="368" fill="#a1a1aa" font-family="system-ui" font-size="11">POST /api/whmcs/invoice-generate • Invoice #10294 • Status: 200 OK (112ms)</text>
+  <rect x="95" y="384" width="610" height="24" rx="4" fill="#27272a"/>
+  <text x="110" y="400" fill="#a1a1aa" font-family="system-ui" font-size="11">GET /api/whm/ssl-status • Domain: *.client.com • Status: Active (Let's Encrypt)</text>
+</svg>
