@@ -53,7 +53,7 @@ export const experiencesData: ExperienceItem[] = [
     period: "May 2024 - Present · 1 Year 6 Month",
     startDate: "2024-05",
     endDate: "Present",
-    current: true,
+    current: false,
     website: "https://madquick.in",
     description: "Full-time web developer responsible for designing, developing, and maintaining responsive web applications. Collaborates with cross-functional teams to translate business requirements into scalable solutions, optimizes web performance and SEO, and promptly troubleshoots technical issues to ensure seamless user experience.",
     achievements: [
@@ -97,7 +97,7 @@ export const experiencesData: ExperienceItem[] = [
     period: "2022 - Present",
     startDate: "2022-01",
     endDate: "Present",
-    current: true,
+    current: false,
     description: "Partnering directly with business owners, founders, and creative agencies to plan, build, and deploy custom web solutions, headless platforms, and high-converting websites.",
     achievements: [
       "Delivered 15+ custom client websites and web applications with 100% client satisfaction.",
