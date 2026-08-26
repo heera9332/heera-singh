@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { profileData } from "@/data/profile";
 
 const PROJECT_TYPES = [
+  "1-on-1 Student Mentorship & Placement Prep",
   "Custom Next.js Web App / SaaS",
   "Custom WordPress Theme / Plugin",
   "WooCommerce / E-Commerce Store",
@@ -17,11 +18,12 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGET_RANGES = [
+  "Student Mentorship / Monthly Plan",
   "Under $1,000",
   "$1,000 - $3,000",
   "$3,000 - $5,000",
   "$5,000+",
-  "Not Sure / Hourly / Retainer"
+  "Flexible / Discussion"
 ];
 
 export function ContactForm() {
@@ -29,7 +31,7 @@ export function ContactForm() {
     name: "",
     email: "",
     projectType: PROJECT_TYPES[0],
-    budget: BUDGET_RANGES[1],
+    budget: BUDGET_RANGES[0],
     timeline: "Within 1 Month",
     message: "",
   });
@@ -58,8 +60,8 @@ export function ContactForm() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "e0310fa0-79ea-4d1e-bd04-4e20b3cbff4c", // Default Web3Forms public key or project key
-          subject: `New Project Inquiry from ${formData.name} - ${formData.projectType}`,
+          access_key: "e0310fa0-79ea-4d1e-bd04-4e20b3cbff4c",
+          subject: `New Inquiry from ${formData.name} - ${formData.projectType}`,
           from_name: formData.name,
           email: formData.email,
           project_type: formData.projectType,
@@ -74,9 +76,9 @@ export function ContactForm() {
       } else {
         // Fallback: If network block or service unavailable, open mailto
         const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
-          `Project Inquiry: ${formData.projectType}`
+          `Inquiry: ${formData.projectType}`
         )}&body=${encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\nBudget: ${formData.budget}\nTimeline: ${formData.timeline}\n\nProject Overview:\n${formData.message}`
+          `Name: ${formData.name}\nEmail: ${formData.email}\nTopic / Category: ${formData.projectType}\nBudget / Plan: ${formData.budget}\nTimeline: ${formData.timeline}\n\nMessage / Goals:\n${formData.message}`
         )}`;
         window.location.href = mailtoUrl;
         setStatus("success");
@@ -84,9 +86,9 @@ export function ContactForm() {
     } catch {
       // In case of offline/fetch error, redirect to mailto safely
       const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
-        `Project Inquiry: ${formData.projectType}`
+        `Inquiry: ${formData.projectType}`
       )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\nBudget: ${formData.budget}\nTimeline: ${formData.timeline}\n\nProject Overview:\n${formData.message}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\nTopic / Category: ${formData.projectType}\nBudget / Plan: ${formData.budget}\nTimeline: ${formData.timeline}\n\nMessage / Goals:\n${formData.message}`
       )}`;
       window.location.href = mailtoUrl;
       setStatus("success");
@@ -104,7 +106,7 @@ export function ContactForm() {
             Thank You, {formData.name}!
           </h3>
           <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-            Your project details have been sent. I will review your requirements and get back to you within 12 hours.
+            Your details have been sent. I will review your requirements or mentorship goals and get back to you within 12 hours.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button
@@ -115,7 +117,7 @@ export function ContactForm() {
                   name: "",
                   email: "",
                   projectType: PROJECT_TYPES[0],
-                  budget: BUDGET_RANGES[1],
+                  budget: BUDGET_RANGES[0],
                   timeline: "Within 1 Month",
                   message: "",
                 });
@@ -140,10 +142,10 @@ export function ContactForm() {
           <div className="space-y-1">
             <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-primary" />
-              Project Inquiry Form
+              Project & Mentorship Inquiry Form
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              Fill in the details below to receive a scope breakdown and price estimate.
+              Fill in the details below to discuss a freelance project or book a 1-on-1 student mentorship session.
             </p>
           </div>
 
@@ -163,7 +165,7 @@ export function ContactForm() {
               <Input
                 id="name"
                 required
-                placeholder="e.g. Sarah Connor"
+                placeholder="e.g. Sarah Connor / Student Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
@@ -176,7 +178,7 @@ export function ContactForm() {
                 id="email"
                 type="email"
                 required
-                placeholder="sarah@company.com"
+                placeholder="sarah@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -187,7 +189,7 @@ export function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <label htmlFor="projectType" className="text-xs font-semibold text-foreground">
-                Project Category
+                Service / Mentorship Topic
               </label>
               <select
                 id="projectType"
@@ -205,7 +207,7 @@ export function ContactForm() {
 
             <div className="space-y-1.5">
               <label htmlFor="budget" className="text-xs font-semibold text-foreground">
-                Estimated Budget
+                Estimated Budget / Plan
               </label>
               <select
                 id="budget"
@@ -225,13 +227,13 @@ export function ContactForm() {
           {/* Message / Requirements */}
           <div className="space-y-1.5">
             <label htmlFor="message" className="text-xs font-semibold text-foreground">
-              Project Details & Goals <span className="text-primary">*</span>
+              Details, Questions, or Mentorship Goals <span className="text-primary">*</span>
             </label>
             <Textarea
               id="message"
               required
               rows={4}
-              placeholder="Briefly describe your project, timeline requirements, key features, or link to design mockups..."
+              placeholder="Tell me about your project scope, tech stack requirements, or what topics you want mentorship on (Next.js, full stack, REST APIs, WordPress, placement prep)..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             />
@@ -248,13 +250,13 @@ export function ContactForm() {
             ) : (
               <>
                 <Send className="h-4 w-4" />
-                Submit Project Inquiry
+                Submit Inquiry
               </>
             )}
           </Button>
 
           <p className="text-center text-[11px] text-muted-foreground">
-            🔒 Your information is confidential and will only be used to respond to your project.
+            🔒 Your information is confidential and will only be used to respond directly to your request.
           </p>
         </form>
       )}

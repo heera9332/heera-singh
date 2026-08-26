@@ -10,7 +10,8 @@ import {
   Globe,
   LayoutGrid,
   Cpu,
-  Smartphone
+  Smartphone,
+  GraduationCap
 } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
@@ -20,9 +21,9 @@ import { ProcessSection } from "@/components/sections/process-section";
 import { generateSeoMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = generateSeoMetadata({
-  title: "Services & Deliverables",
+  title: "Services & Mentorship",
   description:
-    "Explore freelance web development services by Heera Singh Lodhi: Next.js Web Applications, Custom WordPress Development, API & Payment Integrations, and Performance Optimization.",
+    "Explore freelance web development services and 1-on-1 student mentorship by Heera Singh Lodhi: Next.js Web Apps, Custom WordPress, REST APIs, and Placement Preparation.",
   path: "/services/",
 });
 
@@ -31,7 +32,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Globe,
   Cpu,
   Zap,
-  Smartphone
+  Smartphone,
+  GraduationCap
 };
 
 export default function ServicesPage() {

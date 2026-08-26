@@ -2,7 +2,7 @@ export interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  category: "General" | "Pricing & Timelines" | "Technical" | "Process";
+  category: "General" | "Pricing & Timelines" | "Technical" | "Process" | "Mentorship";
 }
 
 export const faqsData: FAQItem[] = [
@@ -13,21 +13,27 @@ export const faqsData: FAQItem[] = [
     category: "General"
   },
   {
+    id: "mentorship-program",
+    question: "Do you provide mentorship for students and placement preparation?",
+    answer: "Yes! I offer personalized 1-on-1 mentorship for college students and junior developers who are learning web development (Frontend, Backend, React/Next.js, REST APIs, WordPress) or preparing for campus placements and software engineering interviews. Sessions include live code reviews, production project building, DSA & OOPs guidance in Java, resume reviews, and mock interview practice.",
+    category: "Mentorship"
+  },
+  {
     id: "pricing-structure",
     question: "How do you price freelance projects?",
-    answer: "I typically work on a fixed-price project model based on clearly defined deliverables and milestone schedules. For long-term advisory, ongoing feature additions, or agency retainer partnerships, I also offer dedicated weekly or monthly sprint packages. You will always receive a clear, upfront estimate with no hidden costs.",
+    answer: "I typically work on a fixed-price project model based on clearly defined deliverables and milestone schedules. For student mentorship, I offer flexible weekly sessions or monthly sprint plans. You will always receive a clear, upfront estimate with no hidden costs.",
     category: "Pricing & Timelines"
   },
   {
     id: "project-timeline",
     question: "What is your typical turnaround time for a project?",
-    answer: "Project timelines depend on scope. A custom WordPress website or landing page typically takes 1 - 3 weeks. A complex full-stack Next.js web application or SaaS platform usually takes 3 - 6 weeks. Fast-track delivery is available for urgent deadlines.",
+    answer: "Project timelines depend on scope. A custom WordPress website or landing page typically takes 1 - 3 weeks. A complex full-stack Next.js web application or decoupled platform usually takes 3 - 6 weeks. Fast-track delivery is available for urgent deadlines.",
     category: "Pricing & Timelines"
   },
   {
     id: "wordpress-vs-nextjs",
     question: "Should I build my website in WordPress or Next.js?",
-    answer: "If your primary goal is editorial freedom where marketing teams frequently publish blog posts, landing pages, and standard content without code changes, a custom WordPress solution is ideal. If your project involves interactive web tools, complex dashboards, user authentication, or real-time SaaS features, Next.js provides unmatched performance and scalability. I can help you evaluate the best fit during our discovery call.",
+    answer: "If your primary goal is editorial freedom where marketing teams frequently publish blog posts, landing pages, and standard content without code changes, a custom WordPress solution is ideal. If your project involves interactive web tools, complex dashboards, user authentication, or real-time features, Next.js provides unmatched performance and scalability. I can help you evaluate the best fit during our discovery call.",
     category: "Technical"
   },
   {

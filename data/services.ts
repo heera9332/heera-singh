@@ -66,6 +66,31 @@ export const servicesData: ServiceItem[] = [
     estimatedTimeline: "1 - 4 Weeks"
   },
   {
+    id: "student-mentorship",
+    slug: "student-mentorship",
+    title: "1-on-1 Mentorship to Learn Web Development",
+    shortDescription: "Personalized mentorship for students and junior developers preparing for campus placements, technical interviews, and mastering full-stack web development.",
+    fullDescription: "Accelerate your software engineering journey with practical, 1-on-1 guidance from an active industry developer. I mentor students learning Full Stack Web Development (React, Next.js, Node.js, PHP, REST APIs, WordPress theme/plugin engineering), Core Java & DSA, resume optimization, and mock technical interview preparation.",
+    badge: "Student Mentorship",
+    iconName: "GraduationCap",
+    featured: true,
+    idealFor: "College students, freshers, and aspiring engineers preparing for tech placements and software developer interviews.",
+    technologies: ["React / Next.js", "Node.js & Express", "REST APIs", "WordPress & PHP", "Core Java & OOP", "Git & GitHub", "Technical Interviews"],
+    deliverables: [
+      "1-on-1 live coding sessions, code reviews, and direct doubt clearance",
+      "Full Stack & Next.js production project guidance from scratch to GitHub",
+      "Placement prep: Data Structures, OOPs concepts & system design fundamentals",
+      "Resume tailoring & LinkedIn/GitHub profile review to stand out to recruiters",
+      "Realistic mock interviews with actionable feedback on coding and communication"
+    ],
+    benefits: [
+      "Gain confidence to clear technical interview rounds and coding assessments",
+      "Build verified, recruiter-ready full stack portfolio projects",
+      "Learn real-world industry coding standards, Git workflows, and deployment"
+    ],
+    estimatedTimeline: "Flexible / 1 - 3 Months Sprint"
+  },
+  {
     id: "api-integrations-backend",
     slug: "api-integrations-backend",
     title: "API Development & Integrations",
