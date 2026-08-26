@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Briefcase,
   GraduationCap,
@@ -34,16 +35,28 @@ export default function AboutPage() {
       {/* Hero / Intro Header */}
       <section>
         <Container>
-          <div className="max-w-3xl space-y-4">
-            <Badge variant="orange" className="font-semibold text-xs">
-              Developer Profile
-            </Badge>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
-              About Heera Singh Lodhi
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Full Stack Software Developer, freelance specialist, and B.Tech graduate in Computer Science.
-            </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 max-w-4xl">
+            <div className="relative h-24 w-24 sm:h-32 sm:w-32 rounded-3xl p-1 ring-2 ring-primary/40 overflow-hidden shrink-0 shadow-xl shadow-primary/10">
+              <Image
+                src={profileData.avatar}
+                alt={profileData.name}
+                width={128}
+                height={128}
+                className="h-full w-full rounded-2xl object-cover"
+                priority
+              />
+            </div>
+            <div className="space-y-2">
+              <Badge variant="orange" className="font-semibold text-xs">
+                Developer Profile
+              </Badge>
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground">
+                About Heera Singh Lodhi
+              </h1>
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Full Stack Software Developer, freelance specialist, and B.Tech graduate in Computer Science.
+              </p>
+            </div>
           </div>
         </Container>
       </section>

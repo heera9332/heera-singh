@@ -40,58 +40,58 @@ export interface ProjectItem {
 
 export const projectsData: ProjectItem[] = [
   {
-    slug: "nextjs-saas-platform",
-    title: "Next.js SaaS Analytics Platform",
-    tagline: "High-performance multi-tenant SaaS dashboard with real-time telemetry, automated reporting, and role-based permissions.",
+    slug: "headless-wordpress-nextjs",
+    title: "Headless CMS Platform (WordPress + Next.js)",
+    tagline: "Decoupled architecture combining WordPress editorial backend with a high-performance Next.js App Router frontend.",
     client: "Stack Console",
     clientIndustry: "Cloud Management & Developer Tools",
     category: "Full Stack",
     featured: true,
     year: "2024",
-    thumbnail: "/projects/saas-platform.svg",
-    heroImage: "/projects/saas-platform-hero.svg",
+    thumbnail: "/projects/headless-cms.svg",
+    heroImage: "/projects/headless-cms-hero.svg",
     liveUrl: "https://stackconsole.io",
     githubUrl: "https://github.com/heera9332",
-    summary: "Architected and built a modern SaaS platform using Next.js App Router, React 19, TypeScript, and Tailwind CSS, decreasing load times by 65% and delivering real-time interactive charts.",
+    summary: "Architected and built a modern decoupled Headless CMS using WordPress as the editorial backend and Next.js App Router for the frontend, decreasing page load times to under 0.7s with on-demand static revalidation.",
     role: "Lead Full Stack Developer",
     duration: "3 Months",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "Recharts"],
+    technologies: ["Next.js", "WordPress (Headless)", "React", "TypeScript", "Tailwind CSS", "REST API / GraphQL", "Node.js"],
     metrics: [
-      { label: "Page Load Speed", value: "<0.8s", description: "First contentful paint achieved" },
-      { label: "Lighthouse Score", value: "98/100", description: "Performance and Best Practices" },
-      { label: "Data Query Latency", value: "-45%", description: "Optimized SQL query performance" },
-      { label: "Active Organizations", value: "500+", description: "Multi-tenant users supported" }
+      { label: "Page Load Speed", value: "<0.7s", description: "Sub-second static & ISR rendering" },
+      { label: "Lighthouse Score", value: "99/100", description: "Core Web Vitals & SEO excellence" },
+      { label: "Revalidation Speed", value: "<2s", description: "On-demand webhook cache clearing" },
+      { label: "Editorial Freedom", value: "100% WP", description: "Native WP Admin content management" }
     ],
     overview: {
-      challenge: "The client needed a responsive, lightning-fast dashboard that could visualize complex server telemetry and organization metrics without UI lag or memory leaks.",
-      solution: "Implemented Next.js Server Components for initial payload streaming, React state hooks for client-side filtering, and lightweight chart rendering with optimized API endpoints.",
-      architecture: "Decoupled Next.js frontend with SSR caching, Express/Node.js microservices layer, PostgreSQL database with connection pooling, and JWT role-based access control.",
-      results: "Delivered a production-ready application within 12 weeks, leading to immediate client onboarding and a 65% decrease in dashboard bounce rate."
+      challenge: "Stack Console needed the intuitive editorial interface of WordPress for content editors, but standard WordPress themes suffered from slow loading speeds, theme bloat, and security concerns.",
+      solution: "Engineered a headless decoupled CMS architecture: WordPress serves strictly as the content repository via REST/GraphQL APIs, while Next.js App Router renders blazing-fast, strictly typed React Server Components with instant live previews.",
+      architecture: "Headless WordPress on backend server, WP REST API / GraphQL data layer, Next.js App Router frontend with On-Demand Incremental Static Regeneration (ISR), Tailwind CSS design tokens, and CDN edge caching.",
+      results: "Delivered sub-0.7s page load times, 99/100 Lighthouse performance, eliminated frontend WordPress security vectors, and provided marketing teams with an effortless publishing workflow."
     },
     features: [
-      "Multi-tenant team management with role-based permissions (Admin, Member, Viewer)",
-      "Interactive data visualizations with customizable date range filters",
-      "Real-time status checks and automated webhook alerts",
-      "Exportable CSV/PDF reports generated asynchronously",
-      "Dark and light theme toggle with persistent preferences"
+      "Decoupled Headless CMS separating editorial content from frontend presentation",
+      "On-demand static revalidation (ISR) triggered automatically by WordPress publish hooks",
+      "Draft live preview mode allowing editors to view Next.js previews before publishing",
+      "Custom ACF (Advanced Custom Fields) schema mapped to typed TypeScript components",
+      "Zero frontend PHP rendering for maximum performance and CDN caching"
     ],
     sections: [
       {
-        title: "The Problem & Architectural Strategy",
-        description: "Legacy systems struggled under heavy data loads and had bloated JavaScript bundles exceeding 2MB. We re-engineered the application from the ground up using Next.js App Router to split code automatically and leverage Server Components for zero-bundle data queries.",
+        title: "The Decoupled Architecture & Why Headless",
+        description: "By decoupling WordPress from the presentation layer, content creators continue using the familiar WordPress admin dashboard while visitors experience instant Next.js page transitions without PHP processing latency.",
         points: [
-          "Eliminated unnecessary client bundle size by keeping heavy data processing server-side",
-          "Implemented optimistic UI updates for instant user interactions",
-          "Created modular TypeScript types shared between API and frontend"
+          "Eliminated traditional theme bloat and heavy visual page builder dependencies",
+          "Implemented secure token-based communication between WordPress and Next.js",
+          "Mapped dynamic ACF custom fields to strongly typed React components"
         ]
       },
       {
-        title: "Frontend Engineering & Component Design",
-        description: "Built with a strict design system utilizing Tailwind CSS and accessible UI primitives. Designed mobile-first to ensure engineers can manage servers and check telemetry directly from their mobile phones.",
+        title: "On-Demand Revalidation & Editorial Preview Workflow",
+        description: "Configured automated webhooks on post save to trigger Next.js cache revalidation, ensuring new blog posts and landing pages update on global CDNs in under 2 seconds.",
         points: [
-          "Zero layout shift (CLS: 0) during data loading with skeleton screens",
-          "Fully keyboard navigable table rows and filter controls",
-          "Clean responsive drawers for mobile inspection panels"
+          "Zero layout shift (CLS: 0) with optimized responsive images and Lexend typography",
+          "Instant live draft preview URL for editors within WordPress admin",
+          "Granular caching strategy reducing backend WordPress database queries by over 80%"
         ]
       }
     ]

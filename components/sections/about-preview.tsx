@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Award, Briefcase, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle2, Briefcase, GraduationCap } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { profileData } from "@/data/profile";
@@ -15,9 +16,20 @@ export function AboutPreview() {
               <span className="text-xs font-bold uppercase tracking-wider text-primary">
                 About the Developer
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-                Hi, I'm {profileData.name}
-              </h2>
+              <div className="flex items-center gap-3.5">
+                <div className="relative h-12 w-12 rounded-full p-0.5 ring-2 ring-primary/40 overflow-hidden shrink-0">
+                  <Image
+                    src={profileData.avatar}
+                    alt={profileData.name}
+                    width={48}
+                    height={48}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+                  Hi, I'm {profileData.name}
+                </h2>
+              </div>
               <p className="text-base text-muted-foreground leading-relaxed">
                 {profileData.shortBio}
               </p>
@@ -35,7 +47,7 @@ export function AboutPreview() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link href="/about/">
                 <Button variant="outline" className="gap-2 font-semibold">
-                  <span>Read Full Background & Education</span>
+                  <span>Read Full Background & Experience</span>
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
@@ -50,9 +62,25 @@ export function AboutPreview() {
           {/* Right Column: Quick Credentials Card */}
           <div className="lg:col-span-5">
             <div className="rounded-2xl border border-border/80 bg-card/80 p-6 sm:p-8 space-y-6 shadow-sm">
-              <h3 className="text-lg font-bold text-foreground border-b border-border/60 pb-3">
-                Experience Snapshot
-              </h3>
+              <div className="flex items-center gap-4 border-b border-border/60 pb-4">
+                <div className="relative h-16 w-16 rounded-2xl overflow-hidden ring-2 ring-primary/30 shrink-0">
+                  <Image
+                    src={profileData.avatar}
+                    alt={profileData.name}
+                    width={64}
+                    height={64}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">
+                    {profileData.name}
+                  </h3>
+                  <p className="text-xs text-primary font-semibold">
+                    Full Stack Software Developer
+                  </p>
+                </div>
+              </div>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -60,9 +88,9 @@ export function AboutPreview() {
                     <Briefcase className="h-4 w-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-primary">May 2024 - Present</span>
-                    <h4 className="text-sm font-bold text-foreground">Web Developer</h4>
-                    <p className="text-xs text-muted-foreground">MadQuick Pvt Ltd · Sagar, MP</p>
+                    <span className="text-xs font-semibold text-primary">8+ Months · Remote</span>
+                    <h4 className="text-sm font-bold text-foreground">Full Stack Developer</h4>
+                    <p className="text-xs text-muted-foreground">Stack Console · Active Projects</p>
                   </div>
                 </div>
 
@@ -71,9 +99,9 @@ export function AboutPreview() {
                     <Briefcase className="h-4 w-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold text-primary">Active Projects</span>
-                    <h4 className="text-sm font-bold text-foreground">Full Stack Developer</h4>
-                    <p className="text-xs text-muted-foreground">Stack Console · Remote</p>
+                    <span className="text-xs font-semibold text-primary">May 2024 - Present · 1.5+ Yrs</span>
+                    <h4 className="text-sm font-bold text-foreground">Web Developer</h4>
+                    <p className="text-xs text-muted-foreground">MadQuick Pvt Ltd · On-site</p>
                   </div>
                 </div>
 

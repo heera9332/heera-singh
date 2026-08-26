@@ -62,7 +62,7 @@ sequenceDiagram
     Builder->>Data: Fetch all project records
     Builder->>Params: Invoke generateStaticParams()
     Params->>Data: getAllProjectSlugs()
-    Data-->>Params: Returns ['wordpress-business-website', 'nextjs-saas-platform', ...]
+    Data-->>Params: Returns ['wordpress-business-website', 'headless-wordpress-nextjs', ...]
     Params-->>Builder: Array of slug params
 
     loop For each slug

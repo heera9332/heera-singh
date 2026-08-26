@@ -79,7 +79,7 @@ The home page must adhere to the high-converting freelance flow:
 ### 2.6 Dynamic Case Study Pages (`app/work/[slug]/page.tsx`)
 Detailed deep-dive case studies for projects such as:
 - `/work/wordpress-business-website`
-- `/work/nextjs-saas-platform`
+- `/work/headless-wordpress-nextjs`
 - `/work/react-admin-dashboard`
 - `/work/ecommerce-platform`
 - Case study structure:

@@ -7,7 +7,7 @@ export function generateSeoMetadata({
   title,
   description,
   path = "",
-  image = "/images/og-image.png",
+  image = "/heera-singh.png",
 }: {
   title?: string;
   description?: string;

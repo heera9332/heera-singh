@@ -23,13 +23,13 @@ export const testimonialsData: TestimonialItem[] = [
   },
   {
     id: "2",
-    name: "SaaS Founder",
-    role: "Founder & CEO",
-    company: "Cloud Tools Startup",
-    quote: "Working with Heera on our Next.js dashboard was a breeze. He wrote clean, strictly typed code and understood both complex backend queries and slick frontend responsiveness.",
-    projectType: "Next.js & TypeScript SaaS App",
+    name: "Product Lead",
+    role: "Engineering Manager",
+    company: "Stack Console",
+    quote: "Heera engineered our Headless WordPress + Next.js setup flawlessly. Our content editors kept their familiar WP admin while our frontend now loads in under 0.7s with zero layout shift.",
+    projectType: "Headless WordPress & Next.js Platform",
     rating: 5,
-    highlight: "Clean TypeScript and reliable communication"
+    highlight: "Sub-0.7s load time & decoupled headless CMS"
   },
   {
     id: "3",

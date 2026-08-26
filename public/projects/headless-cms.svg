@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="headlessBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="headlessOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#headlessBg)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#111114" stroke="#27272a" stroke-width="2"/>
+  <!-- Top bar -->
+  <rect x="40" y="40" width="720" height="48" rx="16" fill="#1c1c20"/>
+  <circle cx="70" cy="64" r="6" fill="#ef4444"/>
+  <circle cx="90" cy="64" r="6" fill="#f59e0b"/>
+  <circle cx="110" cy="64" r="6" fill="#10b981"/>
+  <text x="140" y="68" fill="#71717a" font-family="system-ui" font-size="12" font-weight="600">stackconsole.io — Decoupled Headless CMS (WordPress + Next.js)</text>
+
+  <!-- Left: Headless WordPress Backend -->
+  <rect x="70" y="115" width="280" height="315" rx="12" fill="#18181b" stroke="#27272a"/>
+  <rect x="90" y="135" width="240" height="36" rx="8" fill="#27272a"/>
+  <circle cx="110" cy="153" r="10" fill="#3858e9"/>
+  <text x="106" y="157" fill="#ffffff" font-family="system-ui" font-size="11" font-weight="bold">W</text>
+  <text x="130" y="157" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="bold">Headless WordPress</text>
+  
+  <rect x="90" y="185" width="240" height="45" rx="8" fill="#1c1c20"/>
+  <text x="105" y="205" fill="#a1a1aa" font-family="system-ui" font-size="11">ACF Pro Schema &amp; Post Types</text>
+  <text x="105" y="222" fill="#10b981" font-family="system-ui" font-size="10">● REST API / GraphQL Ready</text>
+
+  <rect x="90" y="240" width="240" height="45" rx="8" fill="#1c1c20"/>
+  <text x="105" y="260" fill="#a1a1aa" font-family="system-ui" font-size="11">Editorial WP-Admin Dashboard</text>
+  <text x="105" y="277" fill="#f97316" font-family="system-ui" font-size="10">● Native Content Editing</text>
+
+  <rect x="90" y="295" width="240" height="45" rx="8" fill="#1c1c20"/>
+  <text x="105" y="315" fill="#a1a1aa" font-family="system-ui" font-size="11">Webhook Trigger on Publish</text>
+  <text x="105" y="332" fill="#38bdf8" font-family="system-ui" font-size="10">● On-Demand ISR Event</text>
+
+  <rect x="90" y="355" width="240" height="55" rx="8" fill="#27272a"/>
+  <text x="105" y="385" fill="#a1a1aa" font-family="monospace" font-size="11">POST /api/revalidate</text>
+
+  <!-- Middle: Sync Bridge -->
+  <path d="M 360 270 L 430 270" stroke="url(#headlessOrange)" stroke-width="3" stroke-dasharray="6,4"/>
+  <polygon points="435,270 425,264 425,276" fill="#f97316"/>
+
+  <!-- Right: Next.js App Router Frontend -->
+  <rect x="445" y="115" width="285" height="315" rx="12" fill="#18181b" stroke="#27272a"/>
+  <rect x="465" y="135" width="245" height="36" rx="8" fill="#27272a"/>
+  <circle cx="485" cy="153" r="10" fill="#ffffff"/>
+  <text x="481" y="157" fill="#000000" font-family="system-ui" font-size="11" font-weight="bold">N</text>
+  <text x="505" y="157" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="bold">Next.js App Router (SSG/ISR)</text>
+
+  <!-- Metrics -->
+  <rect x="465" y="185" width="115" height="70" rx="8" fill="#1c1c20" stroke="#27272a"/>
+  <text x="475" y="208" fill="#a1a1aa" font-family="system-ui" font-size="10" font-weight="600">PAGE SPEED</text>
+  <text x="475" y="240" fill="#f97316" font-family="system-ui" font-size="20" font-weight="800">&lt; 0.7s</text>
+
+  <rect x="595" y="185" width="115" height="70" rx="8" fill="#1c1c20" stroke="#27272a"/>
+  <text x="605" y="208" fill="#a1a1aa" font-family="system-ui" font-size="10" font-weight="600">LIGHTHOUSE</text>
+  <text x="605" y="240" fill="#10b981" font-family="system-ui" font-size="20" font-weight="800">99/100</text>
+
+  <rect x="465" y="265" width="245" height="145" rx="8" fill="#1c1c20" stroke="#27272a"/>
+  <text x="480" y="290" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="bold">Global Edge Delivery</text>
+  <text x="480" y="315" fill="#a1a1aa" font-family="system-ui" font-size="11">✓ Zero PHP processing on client requests</text>
+  <text x="480" y="338" fill="#a1a1aa" font-family="system-ui" font-size="11">✓ Instant editorial live draft previews</text>
+  <text x="480" y="361" fill="#a1a1aa" font-family="system-ui" font-size="11">✓ Full TypeScript component types</text>
+  <text x="480" y="384" fill="#a1a1aa" font-family="system-ui" font-size="11">✓ 100% static CDN cache hits</text>
+</svg>

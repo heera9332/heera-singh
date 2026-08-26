@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles, Code2, CheckCircle2, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Sparkles, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { profileData } from "@/data/profile";
@@ -22,9 +23,27 @@ export function HeroSection() {
       </div>
 
       <Container>
-        <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center space-y-7 max-w-4xl mx-auto">
+          {/* Profile Avatar with Status Pulse */}
+          <div className="relative inline-block animate-fade-in">
+            <div className="relative h-24 w-24 sm:h-28 sm:w-28 rounded-full p-1 ring-2 ring-primary/40 bg-gradient-to-tr from-primary/30 to-amber-500/20 shadow-xl shadow-primary/10">
+              <Image
+                src={profileData.avatar}
+                alt={profileData.name}
+                width={112}
+                height={112}
+                className="h-full w-full rounded-full object-cover"
+                priority
+              />
+              <span className="absolute bottom-1 right-1 flex h-4 w-4" title="Available for hire">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-background" />
+              </span>
+            </div>
+          </div>
+
           {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary backdrop-blur-sm shadow-sm animate-fade-in">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary backdrop-blur-sm shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -69,7 +88,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust Guarantees */}
-          <div className="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-muted-foreground pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-y-2 gap-x-6 text-xs text-muted-foreground pt-1">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
               100% Bespoke Code (No Bloat)
@@ -85,7 +104,7 @@ export function HeroSection() {
           </div>
 
           {/* Stats Bar */}
-          <div className="w-full pt-10">
+          <div className="w-full pt-8">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 sm:p-6 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-md">
               {profileData.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-0.5">
