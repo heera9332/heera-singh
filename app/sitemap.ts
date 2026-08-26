@@ -1,9 +1,8 @@
 import { MetadataRoute } from "next";
 import { getAllProjectSlugs } from "@/data/projects";
+import { SITE_URL } from "@/lib/metadata";
 
 export const dynamic = "force-static";
-
-const SITE_URL = "https://heera.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectSlugs = getAllProjectSlugs();

@@ -1,13 +1,15 @@
 import { Metadata } from "next";
 import { profileData } from "@/data/profile";
 
-const SITE_URL = "https://heera.dev";
+const BASE_PATH = "/portfolio";
+const DOMAIN = "https://zoro-dev.com";
+export const SITE_URL = `${DOMAIN}${BASE_PATH}`;
 
 export function generateSeoMetadata({
   title,
   description,
   path = "",
-  image = "/heera-singh.png",
+  image = "/portfolio/heera-singh.png",
 }: {
   title?: string;
   description?: string;
@@ -22,7 +24,13 @@ export function generateSeoMetadata({
     description ||
     "Freelance Full Stack Web Developer specializing in Next.js, React, Node.js, and custom WordPress theme & plugin development. Building high-speed, conversion-focused digital products.";
 
-  const canonicalUrl = `${SITE_URL}${path}`;
+  const canonicalUrl = path
+    ? `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`
+    : `${SITE_URL}/`;
+
+  const fullImageUrl = image.startsWith("http")
+    ? image
+    : `${DOMAIN}${image.startsWith("/") ? image : `/${image}`}`;
 
   return {
     title: metaTitle,
@@ -37,7 +45,7 @@ export function generateSeoMetadata({
       siteName: `${profileData.shortName} Portfolio`,
       images: [
         {
-          url: image.startsWith("http") ? image : `${SITE_URL}${image}`,
+          url: fullImageUrl,
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -50,7 +58,7 @@ export function generateSeoMetadata({
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: [image.startsWith("http") ? image : `${SITE_URL}${image}`],
+      images: [fullImageUrl],
     },
     robots: {
       index: true,

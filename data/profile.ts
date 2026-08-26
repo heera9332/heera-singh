@@ -37,7 +37,7 @@ export const profileData: ProfileData = {
   title: "Full Stack Software Developer & Freelance Specialist",
   role: "Full Stack Software Developer",
   tagline: "Building high-performance Next.js web applications, custom WordPress solutions, and scalable API systems for growing businesses.",
-  avatar: "/heera-singh.png",
+  avatar: "/portfolio/heera-singh.png",
   shortBio: "Dedicated Full Stack Developer with strong expertise in React/Next.js, Node.js, and custom WordPress theme & plugin development. Experienced in turning complex business requirements into fast, accessible, and revenue-generating digital products.",
   fullBio: [
     "I am a passionate Full Stack Software Developer with a B.Tech in Computer Science from Infinity Management & Engineering College, Sagar (MP).",
@@ -51,7 +51,7 @@ export const profileData: ProfileData = {
   socials: {
     github: "https://github.com/heera9332",
     linkedin: "https://www.linkedin.com/in/heera9331/",
-    website: "https://heera.dev",
+    website: "https://heera.dev/portfolio",
     email: "mailto:heera9331@gmail.com"
   },
   availability: {

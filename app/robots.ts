@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/metadata";
 
 export const dynamic = "force-static";
-
-const SITE_URL = "https://heera.dev";
 
 export default function robots(): MetadataRoute.Robots {
   return {
