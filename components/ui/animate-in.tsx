@@ -17,8 +17,8 @@ export function AnimateIn({
   children,
   delay = 0,
   direction = "up",
-  duration = 600,
-  threshold = 0.1,
+  duration = 500,
+  threshold = 0.01,
   className,
   as: Component = "div",
   ...props
@@ -28,52 +28,70 @@ export function AnimateIn({
 
   React.useEffect(() => {
     // If prefers-reduced-motion is active, make immediately visible
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       setIsVisible(true);
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            if (domRef.current) {
-              observer.unobserve(domRef.current);
-            }
-          }
-        });
-      },
-      {
-        threshold,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
     const currentElem = domRef.current;
-    if (currentElem) {
-      observer.observe(currentElem);
+    if (!currentElem) return;
+
+    // Check if element is already in or near viewport on mount
+    const rect = currentElem.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 150) {
+      setIsVisible(true);
+      return;
     }
 
-    return () => {
-      if (currentElem) {
-        observer.unobserve(currentElem);
-      }
-    };
-  }, [threshold]);
+    if (typeof IntersectionObserver !== "undefined") {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              setIsVisible(true);
+              if (domRef.current) {
+                observer.unobserve(domRef.current);
+              }
+            }
+          });
+        },
+        {
+          threshold: 0,
+          rootMargin: "150px 0px 100px 0px", // triggers slightly ahead of scroll
+        }
+      );
+
+      observer.observe(currentElem);
+
+      // Fallback timer ensures elements are never stuck hidden
+      const fallbackTimer = setTimeout(() => {
+        setIsVisible(true);
+      }, 1200);
+
+      return () => {
+        observer.disconnect();
+        clearTimeout(fallbackTimer);
+      };
+    } else {
+      // If IntersectionObserver is not supported, show immediately
+      setIsVisible(true);
+    }
+  }, []);
 
   const getTransformStyle = () => {
     if (isVisible) return "translate3d(0, 0, 0)";
     switch (direction) {
       case "up":
-        return "translate3d(0, 28px, 0)";
+        return "translate3d(0, 18px, 0)";
       case "down":
-        return "translate3d(0, -28px, 0)";
+        return "translate3d(0, -18px, 0)";
       case "left":
-        return "translate3d(28px, 0, 0)";
+        return "translate3d(18px, 0, 0)";
       case "right":
-        return "translate3d(-28px, 0, 0)";
+        return "translate3d(-18px, 0, 0)";
       case "none":
       default:
         return "translate3d(0, 0, 0)";
@@ -89,7 +107,7 @@ export function AnimateIn({
         transitionProperty: "opacity, transform",
         transitionDuration: `${duration}ms`,
         transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-        transitionDelay: `${delay}ms`,
+        transitionDelay: isVisible ? `${delay}ms` : "0ms",
         willChange: "opacity, transform",
       }}
       className={cn(className)}
