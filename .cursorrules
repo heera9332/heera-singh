@@ -1,0 +1,18 @@
+# Cursor AI Rules for Heera Singh Portfolio Project
+
+## Project Constraints
+- **Framework:** Next.js 16 (App Router) with Static Export (`output: 'export'`).
+- **Runtime:** ZERO Node.js runtime in production. No API routes (`app/api`), no Server Actions (`'use server'`), no runtime database queries.
+- **Language:** TypeScript with strict mode. Strongly typed data structures in `data/*.ts`.
+- **Styling:** Tailwind CSS + shadcn/ui.
+- **Theme:** Orange theme (`hsl(24.6 95% 53.1%)`). Default to Dark Mode. Support Light Mode.
+- **Font:** Lexend font family everywhere (`next/font/google`).
+- **Dynamic Routes:** Any dynamic route (like `app/work/[slug]/page.tsx`) MUST export `generateStaticParams()`.
+- **Images:** Use `next/image` with `unoptimized: true` in `next.config.ts` or local static imports.
+- **Components:** Server Components by default. Use `'use client'` only when client-side state/interactivity is required.
+
+## Key References
+- System Architecture: Read `ARCHITECTURE.md`
+- Flow & Funnels: Read `FLOW.md`
+- Requirements: Read `REQUIREMENTS.md`
+- AI Master Guide: Read `AGENTS.md`
