@@ -37,7 +37,7 @@ const VALUE_PROPS = [
 
 export function WhyMe() {
   return (
-    <section className="py-20 border-b border-border/50">
+    <section id="why-me" className="py-20 border-b border-border/50">
       <Container>
         <AnimateIn direction="up">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">

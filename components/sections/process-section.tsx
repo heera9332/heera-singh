@@ -12,7 +12,7 @@ const ICONS: Record<string, React.ElementType> = {
 
 export function ProcessSection() {
   return (
-    <section className="py-20 bg-background/50 border-b border-border/50">
+    <section id="process" className="py-20 bg-background/50 border-b border-border/50">
       <Container>
         <AnimateIn direction="up">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">

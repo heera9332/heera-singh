@@ -34,7 +34,7 @@ export default function AboutPage() {
   return (
     <div className="py-12 sm:py-16 space-y-16">
       {/* Hero / Intro Header */}
-      <section>
+      <section id="story">
         <Container>
           <AnimateIn direction="up">
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 max-w-4xl">
@@ -184,7 +184,7 @@ export default function AboutPage() {
       </section>
 
       {/* Professional Experience Section */}
-      <section className="py-12 bg-background/50 border-y border-border/50">
+      <section id="experience" className="py-12 bg-background/50 border-y border-border/50">
         <Container>
           <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">
@@ -261,7 +261,7 @@ export default function AboutPage() {
       </section>
 
       {/* Education Section */}
-      <section>
+      <section id="education">
         <Container>
           <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">
@@ -317,7 +317,7 @@ export default function AboutPage() {
       </section>
 
       {/* Technical Skills Categorized */}
-      <section className="py-12 bg-background/50 border-t border-border/50">
+      <section id="skills" className="py-12 bg-background/50 border-t border-border/50">
         <Container>
           <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">

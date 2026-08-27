@@ -10,7 +10,7 @@ export function ServicesPreview() {
   const featuredServices = servicesData.slice(0, 3);
 
   return (
-    <section className="py-20 border-b border-border/50">
+    <section id="services" className="py-20 border-b border-border/50">
       <Container>
         <AnimateIn direction="up">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">

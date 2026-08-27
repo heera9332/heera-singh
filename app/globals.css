@@ -57,11 +57,10 @@
   }
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground antialiased font-sans;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 }
 

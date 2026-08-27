@@ -4,7 +4,7 @@ import { skillCategories, coreTechBadges } from "@/data/skills";
 
 export function TechStack() {
   return (
-    <section className="py-20 border-b border-border/50">
+    <section id="tech-stack" className="py-20 border-b border-border/50">
       <Container>
         <AnimateIn direction="up">
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-12">
