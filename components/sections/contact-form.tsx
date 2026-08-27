@@ -5,6 +5,13 @@ import { Send, CheckCircle2, AlertCircle, MessageSquare, Sparkles } from "lucide
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { profileData } from "@/data/profile";
 
 const PROJECT_TYPES = [
@@ -191,36 +198,46 @@ export function ContactForm() {
               <label htmlFor="projectType" className="text-xs font-semibold text-foreground">
                 Service / Mentorship Topic
               </label>
-              <select
-                id="projectType"
+              <Select
                 value={formData.projectType}
-                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                className="flex h-11 w-full rounded-lg border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all"
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, projectType: value }))
+                }
               >
-                {PROJECT_TYPES.map((type) => (
-                  <option key={type} value={type} className="bg-card text-foreground">
-                    {type}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger id="projectType" className="w-full">
+                  <SelectValue placeholder="Select a service or topic" />
+                </SelectTrigger>
+                <SelectContent>
+                  {PROJECT_TYPES.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="space-y-1.5">
               <label htmlFor="budget" className="text-xs font-semibold text-foreground">
                 Estimated Budget / Plan
               </label>
-              <select
-                id="budget"
+              <Select
                 value={formData.budget}
-                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="flex h-11 w-full rounded-lg border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent transition-all"
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, budget: value }))
+                }
               >
-                {BUDGET_RANGES.map((range) => (
-                  <option key={range} value={range} className="bg-card text-foreground">
-                    {range}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger id="budget" className="w-full">
+                  <SelectValue placeholder="Select a budget range" />
+                </SelectTrigger>
+                <SelectContent>
+                  {BUDGET_RANGES.map((range) => (
+                    <SelectItem key={range} value={range}>
+                      {range}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 

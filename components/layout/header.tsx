@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Sparkles, Code2 } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -13,6 +13,7 @@ import { profileData } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
+  { href: "/", label: "Home" },
   { href: "/services/", label: "Services" },
   { href: "/work/", label: "Work" },
   { href: "/about/", label: "About" },
@@ -32,13 +33,22 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const checkIsActive = (href: string) => {
+    const cleanPath = pathname.replace(/\/+$/, "") || "/";
+    const cleanHref = href.replace(/\/+$/, "") || "/";
+    if (cleanHref === "/") {
+      return cleanPath === "/";
+    }
+    return cleanPath === cleanHref || cleanPath.startsWith(`${cleanHref}/`);
+  };
+
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-border/80 bg-background/90 backdrop-blur-xl shadow-md shadow-black/5 py-0"
-          : "border-b border-border/50 bg-background/70 backdrop-blur-md py-0.5"
+          ? "border-b border-border/80 bg-background/90 backdrop-blur-xl shadow-sm shadow-black/5"
+          : "border-b border-border/40 bg-background/70 backdrop-blur-md"
       )}
     >
       <Container>
@@ -70,27 +80,16 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1 lg:gap-2 rounded-full border border-border/70 bg-card/60 px-3 py-1.5 shadow-sm backdrop-blur-md"
+            className="hidden md:flex items-center gap-1 lg:gap-1.5 rounded-full border border-border/70 bg-card/60 px-3 py-1.5 shadow-sm backdrop-blur-md"
           >
-            <Link
-              href="/"
-              className={cn(
-                "px-3.5 py-1.5 text-sm font-medium rounded-full transition-all",
-                pathname === "/"
-                  ? "bg-primary text-primary-foreground shadow-sm font-semibold"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              )}
-            >
-              Home
-            </Link>
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname.startsWith(item.href);
+              const isActive = checkIsActive(item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3.5 py-1.5 text-sm font-medium rounded-full transition-all",
+                    "px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200",
                     isActive
                       ? "bg-primary text-primary-foreground shadow-sm font-semibold"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
