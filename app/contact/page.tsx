@@ -14,7 +14,7 @@ import { AnimateIn } from "@/components/ui/animate-in";
 import { ContactForm } from "@/components/sections/contact-form";
 import { FAQSection } from "@/components/sections/faq-section";
 import { profileData } from "@/data/profile";
-import { generateSeoMetadata } from "@/lib/metadata";
+import { generateSeoMetadata, getBreadcrumbJsonLd } from "@/lib/metadata";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "Contact & Project Inquiries",
@@ -24,8 +24,17 @@ export const metadata: Metadata = generateSeoMetadata({
 });
 
 export default function ContactPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact/" },
+  ]);
+
   return (
     <div className="py-12 sm:py-16 space-y-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Header */}
       <section>
         <Container>

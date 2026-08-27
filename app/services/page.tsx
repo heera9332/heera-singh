@@ -19,7 +19,11 @@ import { Badge } from "@/components/ui/badge";
 import { AnimateIn } from "@/components/ui/animate-in";
 import { servicesData } from "@/data/services";
 import { ProcessSection } from "@/components/sections/process-section";
-import { generateSeoMetadata } from "@/lib/metadata";
+import {
+  generateSeoMetadata,
+  getServicesJsonLd,
+  getBreadcrumbJsonLd,
+} from "@/lib/metadata";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "Services & Mentorship",
@@ -38,8 +42,22 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function ServicesPage() {
+  const servicesJsonLd = getServicesJsonLd();
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services/" },
+  ]);
+
   return (
     <div className="py-12 sm:py-16 space-y-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Header */}
       <section>
         <Container>

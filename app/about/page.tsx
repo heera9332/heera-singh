@@ -21,7 +21,7 @@ import { AnimateIn } from "@/components/ui/animate-in";
 import { profileData } from "@/data/profile";
 import { experiencesData, educationData } from "@/data/experience";
 import { skillCategories } from "@/data/skills";
-import { generateSeoMetadata } from "@/lib/metadata";
+import { generateSeoMetadata, getBreadcrumbJsonLd } from "@/lib/metadata";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "About Me",
@@ -31,8 +31,17 @@ export const metadata: Metadata = generateSeoMetadata({
 });
 
 export default function AboutPage() {
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about/" },
+  ]);
+
   return (
     <div className="py-12 sm:py-16 space-y-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero / Intro Header */}
       <section id="story">
         <Container>

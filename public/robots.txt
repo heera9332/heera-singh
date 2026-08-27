@@ -1,0 +1,25 @@
+# Robots.txt for Heera Singh Portfolio
+# https://zoro-dev.com/portfolio/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# XML Sitemap
+Sitemap: https://zoro-dev.com/portfolio/sitemap.xml
+Host: https://zoro-dev.com

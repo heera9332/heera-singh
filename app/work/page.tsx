@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { AnimateIn } from "@/components/ui/animate-in";
 import { ProjectFilter } from "@/components/projects/project-filter";
 import { getAllProjects } from "@/data/projects";
-import { generateSeoMetadata } from "@/lib/metadata";
+import { generateSeoMetadata, getBreadcrumbJsonLd } from "@/lib/metadata";
 
 export const metadata: Metadata = generateSeoMetadata({
   title: "Selected Work & Case Studies",
@@ -18,9 +18,17 @@ export const metadata: Metadata = generateSeoMetadata({
 
 export default function WorkPage() {
   const projects = getAllProjects();
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Work", url: "/work/" },
+  ]);
 
   return (
     <div className="py-12 sm:py-16 space-y-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Header */}
       <section>
         <Container>

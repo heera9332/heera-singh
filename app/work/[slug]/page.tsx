@@ -21,7 +21,11 @@ import {
   getProjectBySlug,
   getAllProjects
 } from "@/data/projects";
-import { generateSeoMetadata, getProjectJsonLd } from "@/lib/metadata";
+import {
+  generateSeoMetadata,
+  getProjectJsonLd,
+  getBreadcrumbJsonLd,
+} from "@/lib/metadata";
 
 interface CaseStudyPageProps {
   params: Promise<{
@@ -72,12 +76,21 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     currentIndex > 0 ? allProjects[currentIndex - 1] : allProjects[allProjects.length - 1];
 
   const projectJsonLd = getProjectJsonLd(project);
+  const breadcrumbJsonLd = getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Work", url: "/work/" },
+    { name: project.title, url: `/work/${project.slug}/` },
+  ]);
 
   return (
     <div className="py-8 sm:py-12 space-y-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <Container>
