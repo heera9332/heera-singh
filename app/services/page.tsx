@@ -62,7 +62,7 @@ export default function ServicesPage() {
       {/* Services List */}
       <section>
         <Container>
-          <div className="space-y-12 max-w-5xl mx-auto">
+          <div className="space-y-12">
             {servicesData.map((service, index) => {
               const Icon = ICON_MAP[service.iconName] || LayoutGrid;
 

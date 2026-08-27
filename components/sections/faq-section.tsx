@@ -29,7 +29,7 @@ export function FAQSection() {
           </div>
         </AnimateIn>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <AnimateIn delay={150} direction="up">
             <Accordion defaultValue={faqsData[0]?.id}>
               {faqsData.map((faq) => (

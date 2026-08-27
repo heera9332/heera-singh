@@ -8,7 +8,7 @@ import { profileData } from "@/data/profile";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24 lg:py-28 border-b border-border/50">
+    <section className="relative overflow-hidden py-16 border-b border-border/50">
       {/* Background Gradient Mesh */}
       <div
         aria-hidden="true"

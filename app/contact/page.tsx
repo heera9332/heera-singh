@@ -48,7 +48,7 @@ export default function ContactPage() {
       {/* Main Contact Area: Form on Left, Contact Cards on Right */}
       <section>
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
             {/* Form Column */}
             <AnimateIn direction="left" className="lg:col-span-7">
               <ContactForm />

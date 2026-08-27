@@ -186,7 +186,7 @@ export default function AboutPage() {
       {/* Professional Experience Section */}
       <section className="py-12 bg-background/50 border-y border-border/50">
         <Container>
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
@@ -263,7 +263,7 @@ export default function AboutPage() {
       {/* Education Section */}
       <section>
         <Container>
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
@@ -319,7 +319,7 @@ export default function AboutPage() {
       {/* Technical Skills Categorized */}
       <section className="py-12 bg-background/50 border-t border-border/50">
         <Container>
-          <div className="space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-8 max-w-7xl mx-auto">
             <AnimateIn direction="up">
               <div className="space-y-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
