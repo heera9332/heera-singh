@@ -30,7 +30,7 @@ export default function ContactPage() {
   ]);
 
   return (
-    <div className="py-12 sm:py-16 space-y-20">
+    <div className="py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}

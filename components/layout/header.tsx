@@ -51,7 +51,7 @@ export function Header() {
           : "border-b border-border/40 bg-background/70 backdrop-blur-md"
       )}
     >
-      <Container>
+      <Container className="mb-0">
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Brand with Avatar */}
           <Link

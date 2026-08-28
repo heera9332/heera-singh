@@ -222,10 +222,10 @@ export function MobileNav() {
           role="dialog"
           aria-modal="true"
           aria-label="Navigation Sidebar"
-          className="fixed inset-0 top-16 z-50 flex flex-col bg-background/98 backdrop-blur-2xl animate-fade-in border-t border-border/80"
+          className="fixed inset-0 top-16 z-50 flex flex-col bg-background backdrop-blur-2xl animate-fade-in border-t border-border/80"
         >
           {/* Scrollable Sidebar Content */}
-          <div className="flex flex-col justify-between h-[calc(100dvh-4rem)] overflow-y-auto px-4 py-5 space-y-6">
+          <div className="bg-background flex flex-col justify-between min-h-[calc(100dvh-4rem)] overflow-y-auto px-4 py-5 space-y-6">
             <div className="space-y-4">
               {/* Profile / Availability Header */}
               <div className="flex items-center justify-between p-3 rounded-2xl border border-border/70 bg-card/60">
